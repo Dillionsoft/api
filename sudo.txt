@@ -1,0 +1,23 @@
+User = {
+    emailAddress!:string
+    phoneNumber!:string
+    type!: string 'Individual'
+    individual: Individual
+}
+
+Individual = {
+    firstName!:string
+    lastName!:string
+    middleName!:string
+    dob!:Date
+    identity:{
+        type!:string [BVN | NIN]
+        number!:string
+    },
+    document:{
+        idFrontUrl?:string
+        idBackUrl?:string
+        incorporationCertificateUrl?:string
+        addressVerificationUrl?:string
+    }
+}
