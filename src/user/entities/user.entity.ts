@@ -3,7 +3,6 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { Document } from "./document.entity";
 import { Address } from "./address.entity";
 import { Auth } from "src/auth/entities/auth.entity";
-import { Card } from "src/card/entities/card.entity";
 
 
 export enum UserType{
@@ -81,7 +80,4 @@ export class User extends BaseEntity{
 
     @OneToMany(()=>Address, (address)=>address.user, {cascade:true})
     address:Address[]
-
-    @OneToMany(()=>Card, (card)=>card.user, {cascade:true})
-    cards:Card[]
 }

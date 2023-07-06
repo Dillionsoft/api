@@ -4,13 +4,15 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AccessTokenGuard } from "src/core/guards/accessToken.guard";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UpdateUserAddressDto } from "./dto/update-address.dto";
+import { UserAddressService } from "./address.service";
 
 @ApiTags("Users")
 @ApiBearerAuth("access-token")
 @UseGuards(AccessTokenGuard)
 @Controller("users")
 export class UserController{
-    constructor(private readonly userService: UserService){}
+    constructor(private readonly userService: UserService,
+        private readonly addressService: UserAddressService){}
 
     @Get()
     getAll(){
@@ -30,5 +32,15 @@ export class UserController{
     @Put()
     updateUser(@Body() dto:UpdateUserDto, @Req() req:any){
         return this.userService.updateUser(dto, req.user)
+    } 
+
+    @Get("address")
+    userAddress(@Req() req:any){
+        return this.addressService.getOne(req.user)
+    }
+
+    @Put("address")
+    updateAddress(@Body() dto:UpdateUserAddressDto, @Req() req:any){
+        return this.addressService.update(dto, req.user)
     } 
 }

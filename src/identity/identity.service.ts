@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { UserService } from "src/user/user.service";
 import { BvnService } from "./bvn.service";
-import { WalletService } from "src/wallet/wallet.service";
 
 
 @Injectable()
@@ -10,7 +9,6 @@ export class IdentityService{
     constructor(
         private readonly userService: UserService,
         private readonly bvnService: BvnService,
-        private readonly walletService: WalletService
    ){}
 
     async resolveBvn(bvn:string, auth:any){
@@ -37,7 +35,6 @@ export class IdentityService{
             //     throw new HttpException("Bvn data does not match", HttpStatus.BAD_REQUEST)
             // }
 
-            return await this.walletService.create(auth, bvn)
 
         }catch(error){
             throw new HttpException(error.message, error.status)
