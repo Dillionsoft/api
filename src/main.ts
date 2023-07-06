@@ -6,7 +6,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 const PORT = process.env.PORT || 5000
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const config = new DocumentBuilder().setTitle('Sanwo App Api')
+  const config = new DocumentBuilder().setTitle('Dillionpay')
                       .setDescription("Dillionpay")
                       .setVersion('v1')
                       .addBearerAuth({ 

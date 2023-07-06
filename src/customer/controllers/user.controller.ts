@@ -1,15 +1,15 @@
 import { Body, Controller, Get, Param, Post, Put, Req, Session, UseGuards } from "@nestjs/common";
-import { UserService } from "./user.service";
+import { UserService } from "../../user/user.service";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AccessTokenGuard } from "src/core/guards/accessToken.guard";
-import { UpdateUserDto } from "./dto/update-user.dto";
-import { UpdateUserAddressDto } from "./dto/update-address.dto";
-import { UserAddressService } from "./address.service";
+import { UpdateUserDto } from "../../user/dto/update-user.dto";
+import { UpdateUserAddressDto } from "../../user/dto/update-address.dto";
+import { UserAddressService } from "../../user/address.service";
 
-@ApiTags("Users")
+@ApiTags("Customers")
 @ApiBearerAuth("access-token")
 @UseGuards(AccessTokenGuard)
-@Controller("users")
+@Controller("customers")
 export class UserController{
     constructor(private readonly userService: UserService,
         private readonly addressService: UserAddressService){}
@@ -19,7 +19,7 @@ export class UserController{
         return this.userService.findMany()
     }
 
-    @Get("me")
+    @Get("profile")
     me(@Req() req:any){
         return this.userService.me(req.user)
     }

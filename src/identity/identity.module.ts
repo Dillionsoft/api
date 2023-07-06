@@ -1,6 +1,5 @@
 import { Module } from "@nestjs/common";
 import { IdentityService } from "./identity.service";
-import { IdentityController } from "./identity.controller";
 import { UserModule } from "src/user/user.module";
 import { BvnService } from "./bvn.service";
 
@@ -10,6 +9,6 @@ import { BvnService } from "./bvn.service";
     imports:[UserModule],
     providers:[IdentityService, BvnService],
     exports:[IdentityService, BvnService],
-    controllers:[IdentityController]
+    controllers:[]
 })
 export class IdentityModule{}

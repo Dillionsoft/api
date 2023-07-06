@@ -9,6 +9,7 @@ import { TypeOrmConfigService } from './core/config/typeorm.config';
 import { NotificationModule } from './notification/notification.module';
 import { OtpModule } from './otp/otp.module';
 import { IdentityModule } from './identity/identity.module';
+import { CustomerModule } from './customer/customer.module';
 
 @Module({
   imports: [ 
@@ -20,7 +21,8 @@ import { IdentityModule } from './identity/identity.module';
     AuthModule, 
     IdentityModule,
     NotificationModule,
-    OtpModule],
+    OtpModule,
+    CustomerModule],
   controllers: [AppController],
   providers: [AppService],
 })

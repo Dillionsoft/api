@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
-import { OtpService } from "./otp.service";
+import { OtpService } from "../../otp/otp.service";
 import { ApiTags } from "@nestjs/swagger";
-import { SendOtpDto } from "./dto/create-otp-dto";
+import { SendOtpDto } from "../../otp/dto/create-otp-dto";
 
 
-@ApiTags("OTP")
-@Controller("otp")
+@ApiTags("Customers OTP")
+@Controller("customers/otp")
 export class OtpController{
     constructor(private readonly otpService: OtpService){}
 

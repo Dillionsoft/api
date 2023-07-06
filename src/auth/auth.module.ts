@@ -5,7 +5,7 @@ import { PassportModule } from "@nestjs/passport";
 import { JwtModule } from '@nestjs/jwt'
 import { AuthService } from "./auth.service";
 import { PasswordService } from "./password.service";
-import { AuthController } from "./auth.controller";
+import { AuthController } from "../customer/controllers/auth.controller";
 import { AccessTokenStrategy } from "./strategy/accessToken.strategy";
 import { RefreshTokenStrategy } from "./strategy/refreshToken.strategy";
 import { OtpModule } from "src/otp/otp.module";
@@ -22,7 +22,7 @@ import { NotificationModule } from "src/notification/notification.module";
         JwtModule.register({}),
     OtpModule, NotificationModule],
     providers:[AuthRepository, AuthService, PasswordService, AccessTokenStrategy, RefreshTokenStrategy],
-    exports:[PassportModule,JwtModule],
-    controllers:[AuthController]
+    exports:[PassportModule,JwtModule,AuthService, PasswordService],
+    controllers:[]
 })
 export class AuthModule{}
