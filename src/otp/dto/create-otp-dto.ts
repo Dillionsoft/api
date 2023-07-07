@@ -23,6 +23,7 @@ export class SendOtpDto{
         nullable:false
     })
     @IsEnum(OtpType)
+    @Length(6)
     @IsNotEmpty()
     type:OtpType
 }

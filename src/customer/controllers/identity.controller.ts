@@ -3,7 +3,7 @@ import { IdentityService } from "../../identity/identity.service";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AccessTokenGuard } from "src/core/guards/accessToken.guard";
 
-@ApiTags("Customer Identity")
+@ApiTags("Customers")
 @ApiBearerAuth("access-token")
 @UseGuards(AccessTokenGuard)
 @Controller("customers/identity")

@@ -14,20 +14,11 @@ export class UserController{
     constructor(private readonly userService: UserService,
         private readonly addressService: UserAddressService){}
 
-    @Get()
-    getAll(){
-        return this.userService.findMany()
-    }
-
     @Get("profile")
     me(@Req() req:any){
         return this.userService.me(req.user)
     }
 
-    @Get(":id")
-    getById(@Param("id") id:string){
-        return this.userService.getById(id)
-    }
 
     @Put()
     updateUser(@Body() dto:UpdateUserDto, @Req() req:any){

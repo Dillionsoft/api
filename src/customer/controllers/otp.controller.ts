@@ -4,15 +4,10 @@ import { ApiTags } from "@nestjs/swagger";
 import { SendOtpDto } from "../../otp/dto/create-otp-dto";
 
 
-@ApiTags("Customers OTP")
+@ApiTags("Customers")
 @Controller("customers/otp")
 export class OtpController{
     constructor(private readonly otpService: OtpService){}
-
-    @Get()
-    all(){
-        return this.otpService.all()
-    }
 
     @Get(":otp")
     verify(@Param("otp") otp:string){
