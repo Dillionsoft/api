@@ -19,7 +19,6 @@ export class UserController{
         return this.userService.me(req.user)
     }
 
-
     @Put()
     updateUser(@Body() dto:UpdateUserDto, @Req() req:any){
         return this.userService.updateUser(dto, req.user)

@@ -4,7 +4,7 @@ import "reflect-metadata"
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 15000
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
