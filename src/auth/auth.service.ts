@@ -3,9 +3,8 @@ import { AuthRepository } from "./repositories/auth.repository";
 import { PasswordService } from "./password.service";
 import { UserService } from "src/user/user.service";
 import { OtpService } from "src/otp/otp.service";
-import { channel } from "diagnostics_channel";
-import { SmsService } from "src/notification/sms/sms.service";
 import { UserAddressService } from "src/user/address.service";
+import { NotificationConfigRepository } from "./repositories/notification-config.repository";
 
 
 @Injectable()
@@ -16,7 +15,8 @@ export class AuthService{
         private readonly passwordService: PasswordService,
         private readonly userService: UserService,
         private readonly userAddressService: UserAddressService,
-        private readonly otpService: OtpService
+        private readonly otpService: OtpService,
+        private readonly notificationConfigRepository: NotificationConfigRepository
         ){}
 
     
@@ -83,6 +83,7 @@ export class AuthService{
             
             await this.authRepository.insert(newAuth)
            
+            await this.notificationConfigRepository.insert({auth:newAuth})
             
             const user = await this.userService.insertUser(newAuth, phoneNumber)
             await this.userAddressService.create(user, country)
@@ -106,8 +107,6 @@ export class AuthService{
         }
     }
 
-   
-
     forgotPassword(email:string){}
 
     async fetchWithPhone(phoneNumber:string){
@@ -118,5 +117,8 @@ export class AuthService{
         return await this.authRepository.find()
     }
 
+    async getConfig(auth:any){
+        return await this.notificationConfigRepository.findOneBy({auth:{id:auth.id}})
+    }
  
 }

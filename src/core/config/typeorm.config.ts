@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 import { Auth } from "src/auth/entities/auth.entity";
+import { NotificationConfig } from "src/auth/entities/notification-config.entity";
 import { Otp } from "src/otp/entities/otp.entity";
 import { Address } from "src/user/entities/address.entity";
 import { Document } from "src/user/entities/document.entity";
@@ -25,7 +26,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory{
             username:this.configService.get<string>('DB_USER'),
             password:this.configService.get<string>('DB_PASSWORD'),
             database:this.configService.get<string>('DB_NAME'),
-            entities:[User,Auth,Document, Address, Otp],
+            entities:[User,Auth,Document, Address, Otp, NotificationConfig],
             synchronize:true,
             logging:false
         }

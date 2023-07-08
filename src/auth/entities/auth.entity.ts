@@ -1,6 +1,7 @@
 import { BaseEntity } from "src/core/entity.core";
 import { User } from "src/user/entities/user.entity";
 import { Column, Entity, OneToOne } from "typeorm";
+import { NotificationConfig } from "./notification-config.entity";
 
 
 @Entity()
@@ -19,4 +20,7 @@ export class Auth extends BaseEntity{
 
     @OneToOne(()=>User, (user)=>user.auth)
     user:User
+
+    @OneToOne(()=>NotificationConfig, (notificationConfig)=>notificationConfig.auth)
+    notificationConfig: NotificationConfig
 }

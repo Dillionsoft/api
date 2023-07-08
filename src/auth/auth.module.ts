@@ -10,6 +10,7 @@ import { AccessTokenStrategy } from "./strategy/accessToken.strategy";
 import { RefreshTokenStrategy } from "./strategy/refreshToken.strategy";
 import { OtpModule } from "src/otp/otp.module";
 import { NotificationModule } from "src/notification/notification.module";
+import { NotificationConfigRepository } from "./repositories/notification-config.repository";
 
 
 @Module({
@@ -21,7 +22,7 @@ import { NotificationModule } from "src/notification/notification.module";
         }),
         JwtModule.register({}),
     OtpModule, NotificationModule],
-    providers:[AuthRepository, AuthService, PasswordService, AccessTokenStrategy, RefreshTokenStrategy],
+    providers:[AuthRepository,NotificationConfigRepository, AuthService, PasswordService, AccessTokenStrategy, RefreshTokenStrategy],
     exports:[PassportModule,JwtModule,AuthService, PasswordService],
     controllers:[]
 })

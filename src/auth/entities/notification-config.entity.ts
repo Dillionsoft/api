@@ -1,10 +1,11 @@
 import { BaseEntity } from "src/core/entity.core";
-import { User } from "src/user/entities/user.entity";
-import { Column, Entity, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
+import { Auth } from "./auth.entity";
+
 
 
 @Entity()
-export class NotiticationConfig extends BaseEntity{
+export class NotificationConfig extends BaseEntity{
 
     @Column({default:false})
     login:boolean
@@ -17,7 +18,8 @@ export class NotiticationConfig extends BaseEntity{
     
     @Column({default:false})
     product:boolean
-
-    @OneToOne(()=>User, (user)=>user.auth)
-    user:User
+    
+    @OneToOne(()=>Auth)
+    @JoinColumn()
+    auth: Auth
 }

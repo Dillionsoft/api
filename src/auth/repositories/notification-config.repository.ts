@@ -1,11 +1,11 @@
 import { DataSource, Repository } from "typeorm";
 import { Injectable } from "@nestjs/common";
-import { NotiticationConfig } from "../entities/notification-config.entity";
+import { NotificationConfig } from "../entities/notification-config.entity";
 
 
 @Injectable()
-export class NotiticationConfigRepository extends Repository<NotiticationConfig>{
+export class NotificationConfigRepository extends Repository<NotificationConfig>{
     constructor(private readonly dataSource: DataSource){
-        super(NotiticationConfig, dataSource.createEntityManager())
+        super(NotificationConfig, dataSource.createEntityManager())
     }
 }
